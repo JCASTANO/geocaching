@@ -1,3 +1,7 @@
+import { AboutPage } from './../pages/about/about';
+import { TabsPage } from './../pages/tabs/tabs';
+import { PerfilPage } from './../pages/perfil/perfil';
+import { LugarPage } from './../pages/lugar/lugar';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
@@ -10,7 +14,11 @@ import { HomePage } from '../pages/home/home';
 @NgModule({
   declarations: [
     MyApp,
-    HomePage
+    HomePage,
+    LugarPage,
+    PerfilPage,
+    AboutPage,
+    TabsPage
   ],
   imports: [
     BrowserModule,
@@ -19,7 +27,11 @@ import { HomePage } from '../pages/home/home';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
+    HomePage,
+    LugarPage,
+    PerfilPage,
+    AboutPage,
+    TabsPage
   ],
   providers: [
     StatusBar,
