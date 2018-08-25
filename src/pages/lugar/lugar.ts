@@ -1,6 +1,7 @@
-import { AboutPage } from './../about/about';
+import { LugaresService } from './../../services/lugares.service';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavParams, NavController } from 'ionic-angular';
+import { ToastController } from 'ionic-angular';
 
 /**
  * Generated class for the LugarPage page.
@@ -16,22 +17,29 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class LugarPage {
 
-  nombreLugar: string = '';
+  lugar: any = {};
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.nombreLugar = navParams.get('nombre');
+  constructor(private navCtrl: NavController,
+              public navParams: NavParams,
+              private lugaresService : LugaresService,
+              private toastCtrl: ToastController) {
+    this.lugar = {...navParams.get('lugar')};
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad LugarPage');
-  }
-
-  navigateBack() {
+  guardarLugar() { 
+    if(!this.lugar.id) {
+      this.lugar.id = Date.now();
+    }
+    this.lugaresService.createLugar(this.lugar);
+    this.mostrarMensaje();
     this.navCtrl.pop();
   }
 
-  navigateToAbout() {
-    this.navCtrl.push(AboutPage);
+  mostrarMensaje() {
+    const toast = this.toastCtrl.create({
+      message: 'Lugar guardado exitosamente',
+      duration: 3000
+    });
+    toast.present();
   }
-
 }

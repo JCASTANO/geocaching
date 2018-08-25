@@ -11,6 +11,20 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+import { LugaresService } from '../services/lugares.service';
+
+export const firebaseConfig = {
+    apiKey: "AIzaSyBXJZk4E3hgsIpjKFlJ3VFPQYFgfTAXr0I",
+    authDomain: "ionicbasicplatzi-a3680.firebaseapp.com",
+    databaseURL: "https://ionicbasicplatzi-a3680.firebaseio.com",
+    projectId: "ionicbasicplatzi-a3680",
+    storageBucket: "ionicbasicplatzi-a3680.appspot.com",
+    messagingSenderId: "441734257750"
+};
+
 @NgModule({
   declarations: [
     MyApp,
@@ -22,7 +36,10 @@ import { HomePage } from '../pages/home/home';
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireDatabaseModule,
+    AngularFireAuthModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -36,6 +53,7 @@ import { HomePage } from '../pages/home/home';
   providers: [
     StatusBar,
     SplashScreen,
+    LugaresService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

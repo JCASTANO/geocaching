@@ -7,7 +7,7 @@
 </ion-header>
 
 <ion-content padding>
-  <button ion-button color="secondary" (click)="navegarALugar('Primer Lugar')">Navegar a Lugar</button>
+  <!-- <button ion-button color="secondary" (click)="navegarALugar('Primer Lugar')">Navegar a Lugar</button>
   <button ion-button color="primary" (click)="navegarALugar('Segundo Lugar')">Navegar a Segundo Lugar</button>
   <p text-center>Texto center</p>
   <p text-left>Texto left</p>
@@ -28,11 +28,36 @@
   <p margin-left class="selectable"> texto </p>
   <p margin-right class="selectable"> texto </p>
   <p margin-bottom class="selectable"> texto </p>
-  <p margin-top class="selectable"> texto </p>
+  <p margin-top class="selectable"> texto </p> -->
+  <ion-list>
+    <ion-item-sliding *ngFor="let lugar of lugares">
+      <ion-item (click)="irAVistaDeDetalleExistente(lugar)">
+        <h2>{{lugar.nombre}}</h2>
+        <h3>{{lugar.direccion}}</h3>
+        <p>{{lugar.categoria}}</p> 
+        <p>{{lugar.descripcion}}</p> 
+      </ion-item>
+      <ion-item-options side="right">
+        <button ion-button color="danger" (click)="borrarLugar(lugar)">
+          <ion-icon name="trash"></ion-icon>
+          Borrar
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+  <ion-fab bottom right edge>
+    <button ion-fab (click)="irAVistaDeDetalle()"><ion-icon name="add"></ion-icon></button>
+    <!-- <ion-fab-list>
+      <button ion-fab><ion-icon name="logo-facebook"></ion-icon></button>
+      <button ion-fab><ion-icon name="logo-twitter"></ion-icon></button>
+      <button ion-fab><ion-icon name="logo-vimeo"></ion-icon></button>
+      <button ion-fab><ion-icon name="logo-googleplus"></ion-icon></button>
+    </ion-fab-list> -->
+  </ion-fab>
 </ion-content>
 
 <ion-footer>
-  <ion-toolbar color="dark">
+  <ion-toolbar>
     <ion-title>Footer</ion-title>
   </ion-toolbar>
 </ion-footer>
