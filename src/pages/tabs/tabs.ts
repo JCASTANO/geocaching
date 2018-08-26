@@ -1,7 +1,8 @@
+import { LoginPage } from './../login/login';
 import { AboutPage } from './../about/about';
 import { HomePage } from './../home/home';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 import { PerfilPage } from '../perfil/perfil';
 
 /**
@@ -22,11 +23,14 @@ export class TabsPage {
   tab2Root = PerfilPage;
   tab3Root = AboutPage;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
+  constructor(public navCtrl: NavController, 
+              public navParams: NavParams,
+              public modalCtrl: ModalController) {
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad TabsPage');
+   if(!localStorage.getItem('loginData')) {
+      let modal = this.modalCtrl.create(LoginPage);
+      modal.present();
+   }
   }
 
 }

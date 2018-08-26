@@ -1,3 +1,4 @@
+import { LoginPage } from './../pages/login/login';
 import { AboutPage } from './../pages/about/about';
 import { TabsPage } from './../pages/tabs/tabs';
 import { PerfilPage } from './../pages/perfil/perfil';
@@ -15,6 +16,7 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { LugaresService } from '../services/lugares.service';
+import { AuthService } from '../services/auth.service';
 
 export const firebaseConfig = {
     apiKey: "AIzaSyBXJZk4E3hgsIpjKFlJ3VFPQYFgfTAXr0I",
@@ -32,7 +34,8 @@ export const firebaseConfig = {
     LugarPage,
     PerfilPage,
     AboutPage,
-    TabsPage
+    TabsPage,
+    LoginPage
   ],
   imports: [
     BrowserModule,
@@ -48,12 +51,14 @@ export const firebaseConfig = {
     LugarPage,
     PerfilPage,
     AboutPage,
-    TabsPage
+    TabsPage,
+    LoginPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     LugaresService,
+    AuthService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
